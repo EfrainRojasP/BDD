@@ -51,3 +51,5 @@ select * from catalogo_sector;
   where r.fechaDefuncion != '2022-03-25';
  
  select * from catalogo_sector;
+ 
+ #HOOOLA YA ESTA FUNCIONANDO TODO XD
