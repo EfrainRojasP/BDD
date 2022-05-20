@@ -7,7 +7,7 @@ use examen2_fv1_paciente;
 #obtener el id del ultimo registro
 select max(idpaciente) from examen2_fv1_paciente.paciente;
 
-
+/*
 delimiter //
 create procedure insertarRegistro (edad int, sexo int, entNac int, entRes int, munRes int, nac int, hblIndg int, indg int, migrante int, paisNac int, paisOrg int, -- Paciente
                                    idOrg int, idSector int, idEntUM int, idTipoPac int, fchIngreso date, fchSinto date, fchDef date, otroCaso int, -- RegistroPaciente
@@ -83,6 +83,19 @@ call insertarEnferHasPac (9, 2);
 call insertarEnferHasPac (10, 2);
 call insertarEnferHasPac (11, 2);
 call insertarEnferHasPac (12, 2);
+*/
+
+select * from examen2_fv1_paciente.enfermedad;
+
+delimiter //
+create procedure insertarRegistro (idOrg int, idSector int, idEntUM int, sexo int, entNac int, entRes int, munRes int, 
+								   idTipoPac int, fchIngreso date, fchSinto date, fchDef date, intubado int, neumonia int,
+                                   edad int, nac int, embarazo int, hblIndg int, indg int, diabetes int, epoc int, asma int,
+                                   inmunosupr int, hipertension int, otras_com int, cardiovascular int, obesidad int, 
+                                   renal_cronica int, tabaquismo int, otroCaso int, tMLab int, resLab int, tMAnt int, 
+                                   resAnt int, clasFinal int, migrante int, paisNac varchar(50), paisOrg int, UCI int)
+
+
 
 select * from examen2_fv1_paciente.paciente;
 select * from examen2_fv1_registropaciente.registropaciente;
