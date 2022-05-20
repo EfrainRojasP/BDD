@@ -23,12 +23,13 @@ select count(*) from registropaciente r inner join catalogo_sector cs
  on r.idSector = cs.idCatalogoSector 
  where cs.descripcion = "CRUZ ROJA" and  r.fechaDefuncion != '2022-03-25';
  
+ #EL CHIDO
  select r.fechaDefuncion, r.idSector from registropaciente r inner join (select idPaciente from paciente p inner join (select paciente_idPaciente from enfermedad_has_paciente ehp inner join enfermedad e
   on ehp.enfermedad_idEnfermedad = e.idEnfermedad 
   where (nombre = "daibetes" or nombre = "hipertension" or nombre = "epoc") and idCatalogoSINO = 1) res1
   on p.idPaciente = res1.paciente_idPaciente) res2 
   on r.paciente_idpaciente = res2.idPaciente;
- 
+ /*
  select count(res3.fechaDefuncion) from catalogo_sector cs inner join ( select r.fechaDefuncion, r.idSector from registropaciente r inner join (select idPaciente from paciente p inner join (select paciente_idPaciente from enfermedad_has_paciente ehp inner join enfermedad e
   on ehp.enfermedad_idEnfermedad = e.idEnfermedad 
   where (nombre = "daibetes" or nombre = "hipertension" or nombre = "epoc") and idCatalogoSINO = 1) res1
@@ -36,7 +37,7 @@ select count(*) from registropaciente r inner join catalogo_sector cs
   on r.paciente_idpaciente = res2.idPaciente) res3
   on cs.idCatalogoSector = res3.idSector
   where cs.descripcion = "CRUZ ROJA" and  res3.fechaDefuncion != '2022-03-25';
- 
+ */
 select * from catalogo_sector;
 
 ############
