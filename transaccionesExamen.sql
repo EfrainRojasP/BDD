@@ -67,7 +67,7 @@ call insertarRegistro(1, 12, 9, 2, 9, 9, 12,
 select * from examen2_fv1_paciente.paciente;
 select * from examen2_fv1_registropaciente.registropaciente;
 select * from examen2_fv1_analisis.analisis;
-select * from examen2_fv1_paciente.enfermedad_has_paciente;
+select * from examen2_fv1_paciente.enfermedad_has_paciente where paciente_idpaciente = (select max(idpaciente) from examen2_fv1_paciente.paciente);
 
 drop procedure insertarRegistro;
 
