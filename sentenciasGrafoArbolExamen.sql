@@ -26,7 +26,8 @@ select count(*) from registropaciente r inner join catalogo_sector cs
  #EL CHIDO -> Su ponemos que esta fragmentada por catalogo_sector y agarramos un fragmento done SI hay registros
  #El normal es el que esta comentado entre /**/, ese no tiene registros, por eso suponemos que agarramos un fragmento donde
  #si hay registros
- select /*r.fechaDefuncion, r.idSector*/ count(*) from registropaciente r inner join (select idPaciente from paciente p inner join (select paciente_idPaciente from enfermedad_has_paciente ehp inner join enfermedad e
+ select count(r.paciente_idpaciente) from registropaciente r inner join (select idPaciente from paciente p 
+  inner join (select paciente_idPaciente from enfermedad_has_paciente ehp inner join enfermedad e
   on ehp.enfermedad_idEnfermedad = e.idEnfermedad 
   where (e.nombre = "daibetes" or e.nombre = "hipertension" or e.nombre = "epoc") and ehp.idCatalogoSINO = 1) res1
   on p.idPaciente = res1.paciente_idPaciente) res2 
@@ -43,12 +44,13 @@ select count(*) from registropaciente r inner join catalogo_sector cs
 select * from catalogo_sector;
 
 ############
- select res2.edad, res2.sexo from registropaciente r inner join (select p.idPaciente, p.edad, p.sexo from paciente p inner join (select paciente_idPaciente from enfermedad_has_paciente ehp inner join enfermedad e
+select res2.edad, res2.sexo from registropaciente r inner join (select p.idPaciente, p.edad, p.sexo from paciente p 
+  inner join (select paciente_idPaciente from enfermedad_has_paciente ehp inner join enfermedad e
   on ehp.enfermedad_idEnfermedad = e.idEnfermedad 
   where (e.nombre = "asma") and ehp.idCatalogoSINO = 1) res1
   on p.idPaciente = res1.paciente_idPaciente) res2 
-  on r.paciente_idpaciente = res2.idPaciente
-  where r.fechaDefuncion != '2022-03-25';
+on r.paciente_idpaciente = res2.idPaciente
+where r.fechaDefuncion != '2022-03-25';
  
  select * from catalogo_sector;
  
